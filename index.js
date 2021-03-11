@@ -31,7 +31,7 @@ class MediaRecorder {
   /**
    * @param {MediaStream} stream The audio stream to record.
    */
-  constructor (stream, config = null) {
+  constructor(stream, config = null) {
     /**
      * The `MediaStream` passed into the constructor.
      * @type {MediaStream}
@@ -72,7 +72,7 @@ class MediaRecorder {
    *   recorder.start()
    * })
    */
-  start (timeslice) {
+  start(timeslice) {
     if (this.state !== 'inactive') {
       return this.em.dispatchEvent(error('start'))
     }
@@ -105,7 +105,7 @@ class MediaRecorder {
       }, timeslice)
     }
 
-    return undefined
+    return context;
   }
 
   /**
@@ -118,7 +118,7 @@ class MediaRecorder {
    *   recorder.stop()
    * })
    */
-  stop () {
+  stop() {
     if (this.state === 'inactive') {
       return this.em.dispatchEvent(error('stop'))
     }
@@ -143,7 +143,7 @@ class MediaRecorder {
    *   recorder.pause()
    * })
    */
-  pause () {
+  pause() {
     if (this.state !== 'recording') {
       return this.em.dispatchEvent(error('pause'))
     }
@@ -162,7 +162,7 @@ class MediaRecorder {
    *   recorder.resume()
    * })
    */
-  resume () {
+  resume() {
     if (this.state !== 'paused') {
       return this.em.dispatchEvent(error('resume'))
     }
@@ -181,7 +181,7 @@ class MediaRecorder {
    *   recorder.requestData()
    * })
    */
-  requestData () {
+  requestData() {
     if (this.state === 'inactive') {
       return this.em.dispatchEvent(error('requestData'))
     }
@@ -203,7 +203,7 @@ class MediaRecorder {
    *   audio.src = URL.createObjectURL(e.data)
    * })
    */
-  addEventListener (...args) {
+  addEventListener(...args) {
     this.em.addEventListener(...args)
   }
 
@@ -216,7 +216,7 @@ class MediaRecorder {
    *
    * @return {undefined}
    */
-  removeEventListener (...args) {
+  removeEventListener(...args) {
     this.em.removeEventListener(...args)
   }
 
@@ -227,7 +227,7 @@ class MediaRecorder {
    *
    * @return {boolean} Is event was no canceled by any listener.
    */
-  dispatchEvent (...args) {
+  dispatchEvent(...args) {
     this.em.dispatchEvent(...args)
   }
 }
